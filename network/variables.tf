@@ -1,11 +1,11 @@
 variable "vpc_cidr" {
-  type = "string"
+  type = string
 }
 
 variable "public_route_cidr" {
-  type = "string"
+  type = string
 }
 
 variable "private_route_cidr" {
-  type = "string"
+  type = string
 }
