@@ -1,0 +1,5 @@
+my_vpc_cidr = "10.0.0.0/16"
+my_public_route_cidr = "10.0.1.0/24"
+my_private_route_cidr = "10.0.2.0/24"
+my_env_region = "eu-central-1"
+ssh_key = "forterraform94"
