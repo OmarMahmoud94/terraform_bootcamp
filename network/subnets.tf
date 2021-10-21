@@ -9,3 +9,6 @@ resource "aws_subnet" "private1" {
   cidr_block              = "${var.private_route_cidr}"
 }
 
+resource "aws_db_subnet_group" "myvpc_subnets" {
+  subnet_ids = ["${aws_subnet.private1.id}", "${aws_subnet.public1.id}"]
+}
