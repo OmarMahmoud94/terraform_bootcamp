@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 resource "aws_instance" "bastion" {
-  ami             = data.aws_ami.ubuntu.id
+  ami             = "ami-09e67e426f25ce0d7"
   instance_type   = "t2.micro"
   key_name = "${var.ssh_key}"  
   
@@ -31,7 +31,7 @@ resource "aws_instance" "bastion" {
 }
 
 resource "aws_instance" "application" {
-  ami             = data.aws_ami.ubuntu.id
+  ami             = "ami-09e67e426f25ce0d7"
   instance_type   = "t2.micro"
   key_name = var.ssh_key
 
