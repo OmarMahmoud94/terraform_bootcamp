@@ -16,6 +16,19 @@ resource "aws_security_group" "public_sg" {
       self = false
     }
   ]
+  egress = [
+    {
+      description      = "allow net"
+      from_port        = 0
+      to_port          = 0
+      protocol         = "-1"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids = []
+      security_groups = []
+      self = false
+    }
+  ]
 }
 
 resource "aws_security_group" "private_sg" {
@@ -42,6 +55,19 @@ resource "aws_security_group" "private_sg" {
       protocol         = "tcp"
       cidr_blocks      = ["${aws_vpc.myvpc.cidr_block}"]
       ipv6_cidr_blocks = []
+      prefix_list_ids = []
+      security_groups = []
+      self = false
+    }
+  ]
+  egress = [
+    {
+      description      = "allow net"
+      from_port        = 0
+      to_port          = 0
+      protocol         = "-1"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids = []
       security_groups = []
       self = false

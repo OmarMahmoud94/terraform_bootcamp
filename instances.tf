@@ -13,14 +13,13 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"] # Canonical
 }
-
 resource "aws_instance" "bastion" {
-  ami             = "${data.aws_ami.ubuntu.id}"
+  ami             = data.aws_ami.ubuntu.id
   instance_type   = "t2.micro"
   key_name = "${var.ssh_key}"  
   
   network_interface {
-    network_interface_id = "${module.network.pub_net_interface_id}" 
+    network_interface_id = module.network.pub_net_interface1_id
     device_index         = 0
   }
 
@@ -32,12 +31,12 @@ resource "aws_instance" "bastion" {
 }
 
 resource "aws_instance" "application" {
-  ami             = "${data.aws_ami.ubuntu.id}"
+  ami             = data.aws_ami.ubuntu.id
   instance_type   = "t2.micro"
-  key_name = "${var.ssh_key}"
+  key_name = var.ssh_key
 
   network_interface {
-    network_interface_id = "${module.network.pub_net_interface_id}" 
+    network_interface_id = module.network.pub_net_interface2_id
     device_index         = 0
   }
 
